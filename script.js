@@ -1,33 +1,37 @@
-// Array of options
-const option = ["ROCK", "PAPER", "SCISSORS"]
 let userPoints = 0
 let computerPoints = 0
 
-
-// function getUserInput(rock, paper, scissors) {
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('rock').addEventListener('click', () => {
-        let userOptionUpper = "ROCK";
-        let computerChoice = getComputerChoice()
-        playRounds(userOptionUpper, computerChoice)
-        console.log("your points: ", userPoints, " computer points: ", computerPoints)
-    });
-    document.getElementById('paper').addEventListener('click', () =>  {
-        let userOptionUpper = "PAPER";
-        let computerChoice = getComputerChoice()
-        playRounds(userOptionUpper, computerChoice)
-        console.log("your points: ", userPoints, " computer points: ", computerPoints)
-    });
-    document.getElementById('scissors').addEventListener('click', () => {
-        let userOptionUpper = "SCISSORS";
-        let computerChoice = getComputerChoice()
-        playRounds(userOptionUpper, computerChoice)
-        console.log("your points: ", userPoints, " computer points: ", computerPoints)
-    });
+    if (computerPoints < 5 && userPoints < 5) {
+        document.getElementById('rock').addEventListener('click', () => {
+            let userOption = "ROCK";
+            let computerChoice = getComputerChoice();
+            playRounds(userOption, computerChoice)
+            console.log("your points: ", userPoints, " computer points: ", computerPoints)
+        });
+        document.getElementById('paper').addEventListener('click', () =>  {
+            let userOption = "PAPER";
+            let computerChoice = getComputerChoice()
+            playRounds(userOption, computerChoice)
+            console.log("your points: ", userPoints, " computer points: ", computerPoints)
+        });
+        document.getElementById('scissors').addEventListener('click', () => {
+            let userOption = "SCISSORS";
+            let computerChoice = getComputerChoice()
+            playRounds(userOption, computerChoice)
+            console.log("your points: ", userPoints, " computer points: ", computerPoints)
+        });
+    }
+    else if (computerPoints >= 5 || userPoints >= 5 ) {
+        document.getElementsByClassName('btn').disabled = true;
+        if (computerPoints == 5) {
+            document.getElementById('status').innerHTML = "YOU LOSE";
+        }
+        else {
+            document.getElementById('status').innerHTML = "YOU WIN";
+        }
+    }
 });
-// }
-
-// getUserInput()
 
 function getComputerChoice() {
     const num = Math.floor(Math.random() * 3)
@@ -45,35 +49,35 @@ function getComputerChoice() {
     }
 }
 
-function playRounds(userOptionUpper, computerChoice) {
+function playRounds(userOption, computerChoice) {
     const status = document.getElementById('status');
-    if (userOptionUpper == "PAPER" && computerChoice == "scissors") {
+    if (userOption == "PAPER" && computerChoice == "scissors") {
         status.innerHTML = "PAPER VS SCISSORS"
         computerPoints++
     }
-    else if (userOptionUpper == "PAPER" && computerChoice == "rock") {
+    else if (userOption == "PAPER" && computerChoice == "rock") {
         status.innerHTML = "PAPER VS ROCK"
         userPoints++     
     }
-    else if (userOptionUpper == "PAPER" && computerChoice == "paper") {
+    else if (userOption == "PAPER" && computerChoice == "paper") {
         status.innerHTML = "PAPER VS PAPER"
     }
-    else if (userOptionUpper == "ROCK" && computerChoice == "rock") {
+    else if (userOption == "ROCK" && computerChoice == "rock") {
         status.innerHTML = "ROCK VS ROCK"
     }
-    else if (userOptionUpper == "ROCK" && computerChoice == "paper") {
+    else if (userOption == "ROCK" && computerChoice == "paper") {
         status.innerHTML = "ROCK VS PAPER" 
         computerPoints++
     }
-    else if (userOptionUpper == "ROCK" && computerChoice == "scissors") {
+    else if (userOption == "ROCK" && computerChoice == "scissors") {
         status.innerHTML = "ROCK VS SCISSORS" 
         userPoints++
     }
-    else if (userOptionUpper == "SCISSORS" && computerChoice == "rock") {
+    else if (userOption == "SCISSORS" && computerChoice == "rock") {
         status.innerHTML = "SCISSORS VS ROCK"
         computerPoints++
     }
-    else if (userOptionUpper == "SCISSORS" && computerChoice == "paper") {
+    else if (userOption == "SCISSORS" && computerChoice == "paper") {
         status.innerHTML = "SCISSORS VS PAPER"
         userPoints++
     }
@@ -85,31 +89,3 @@ function playRounds(userOptionUpper, computerChoice) {
 
     return userPoints, computerPoints
 }
-
-function checkWinner(userPoints, computerPoints) {
-    if (userPoints < computerPoints) {
-        console.log("Computer wins, with ", computerPoints, " points!")
-    }
-    else if (userPoints > computerPoints) {
-        console.log("You win, with ", userPoints, " points!")
-    }
-    else {
-        console.log("There has been a draw, both of you have ", userPoints, " points!")
-    }
-}
-
-function playGame() {
-    for (let i = 0; i <= 4; i++) {
-        let userOptionRandom = prompt("Choose your weapon")
-        let userOptionUpper = userOptionRandom.toUpperCase()
-        if (option.includes(userOptionUpper)) {
-            let computerChoice = getComputerChoice()
-            playRounds(userOptionUpper, computerChoice)
-        }
-        else {
-            console.log("Choose from rock, paper or scissors")
-        }
-    }
-    checkWinner(userPoints, computerPoints)
-}
-// playGame()
