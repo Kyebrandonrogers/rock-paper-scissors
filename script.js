@@ -4,56 +4,84 @@ let userPoints = 0
 let computerPoints = 0
 
 
+// function getUserInput(rock, paper, scissors) {
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('rock').addEventListener('click', () => {
+        let userOptionUpper = "ROCK";
+        let computerChoice = getComputerChoice()
+        playRounds(userOptionUpper, computerChoice)
+        console.log("your points: ", userPoints, " computer points: ", computerPoints)
+    });
+    document.getElementById('paper').addEventListener('click', () =>  {
+        let userOptionUpper = "PAPER";
+        let computerChoice = getComputerChoice()
+        playRounds(userOptionUpper, computerChoice)
+        console.log("your points: ", userPoints, " computer points: ", computerPoints)
+    });
+    document.getElementById('scissors').addEventListener('click', () => {
+        let userOptionUpper = "SCISSORS";
+        let computerChoice = getComputerChoice()
+        playRounds(userOptionUpper, computerChoice)
+        console.log("your points: ", userPoints, " computer points: ", computerPoints)
+    });
+});
+// }
+
+// getUserInput()
+
 function getComputerChoice() {
     const num = Math.floor(Math.random() * 3)
     if (num == "0") {
-        let choice = "rock"
-        return choice
+        let computerChoice = "rock"
+        return computerChoice
     }
     else if (num == "1") {
-        let choice = "paper"
-        return choice
+        let computerChoice = "paper"
+        return computerChoice
     }
     else if (num == "2") {
-        let choice = "scissors"
-        return choice
+        let computerChoice = "scissors"
+        return computerChoice
     }
 }
 
 function playRounds(userOptionUpper, computerChoice) {
+    const status = document.getElementById('status');
     if (userOptionUpper == "PAPER" && computerChoice == "scissors") {
-        console.log("paper vs scissors. Computer wins the round")
+        status.innerHTML = "PAPER VS SCISSORS"
         computerPoints++
     }
     else if (userOptionUpper == "PAPER" && computerChoice == "rock") {
-        console.log("paper vs rock. You win the round")
+        status.innerHTML = "PAPER VS ROCK"
         userPoints++     
     }
     else if (userOptionUpper == "PAPER" && computerChoice == "paper") {
-        console.log("paper vs paper. Draw")
+        status.innerHTML = "PAPER VS PAPER"
     }
     else if (userOptionUpper == "ROCK" && computerChoice == "rock") {
-        console.log("rock vs rock. Draw")   
+        status.innerHTML = "ROCK VS ROCK"
     }
     else if (userOptionUpper == "ROCK" && computerChoice == "paper") {
-        console.log("rock vs paper. Computer wins the round")   
+        status.innerHTML = "ROCK VS PAPER" 
         computerPoints++
     }
     else if (userOptionUpper == "ROCK" && computerChoice == "scissors") {
-        console.log("rock vs scissors. You win the round")   
+        status.innerHTML = "ROCK VS SCISSORS" 
         userPoints++
     }
     else if (userOptionUpper == "SCISSORS" && computerChoice == "rock") {
-        console.log("scissors vs rock. Computer wins the round") 
+        status.innerHTML = "SCISSORS VS ROCK"
         computerPoints++
     }
     else if (userOptionUpper == "SCISSORS" && computerChoice == "paper") {
-        console.log("scissors vs paper. You win the round")   
+        status.innerHTML = "SCISSORS VS PAPER"
         userPoints++
     }
     else {
-        console.log("scissors vs scissors. Draw")
+        status.innerHTML = "SCISSORS VS SCISSORS"
     }
+    document.getElementById('points1').innerHTML = userPoints;
+    document.getElementById('points2').innerHTML = computerPoints;
 
     return userPoints, computerPoints
 }
@@ -84,4 +112,4 @@ function playGame() {
     }
     checkWinner(userPoints, computerPoints)
 }
-playGame()
+// playGame()

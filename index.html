@@ -4,11 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <center>
-        <h1>Play in the console!</h1>
-    </center>
+    <div class="page">
+
+        <div class="header">
+            <h1>This is rock paper scissors</h1>
+        </div>
+        <div class="container">
+            <h1 id="status"></h1>
+            <div class="boxes">
+                <div class="box">
+                    <button value="ROCK" id="rock">
+                        <img src="images/hand.png">
+                    </button>
+                </div>
+                <div class="box">
+                    <button   value="PAPER" id="paper">
+                        <img src="images/paper.png">
+                    </button>
+                </div>
+                <div class="box">
+                    <button  value="SCISSORS" id="scissors">
+                        <img src="images/scissors.png">
+                    </button> 
+                </div>
+    
+            </div>
+            <div class="scores">
+                <div class="score">
+                    <h2>Your score: <span id="points1"></span></h2>
+                </div>
+                <div class="score">
+                    <h2>Computer score: <span id="points2"></span></h2>
+                </div>
+    
+            </div>
+        </div>
+        <div class="footer">
+    
+        </div>
+    </div>
 </body>
 </html>
