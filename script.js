@@ -2,29 +2,71 @@ let userPoints = 0
 let computerPoints = 0
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (computerPoints < 5 && userPoints < 5) {
-        document.getElementById('rock').addEventListener('click', () => {
+    document.getElementById('rock').addEventListener('click', () => {
+        if (computerPoints < 5 && userPoints < 5) {
             let userOption = "ROCK";
             let computerChoice = getComputerChoice();
             playRounds(userOption, computerChoice)
-            console.log("your points: ", userPoints, " computer points: ", computerPoints)
-        });
-        document.getElementById('paper').addEventListener('click', () =>  {
+            if (computerPoints == 5)  {
+                document.getElementById('status').innerHTML = "YOU LOSE";
+            }
+            else if (userPoints == 5) {
+                document.getElementById('status').innerHTML = "YOU WIN";
+            }
+        }
+        else {
+            if (computerPoints == 5)  {
+                document.getElementById('status').innerHTML = "YOU LOSE";
+            }
+            else {
+                document.getElementById('status').innerHTML = "YOU WIN";
+            }
+        }
+    });
+    document.getElementById('paper').addEventListener('click', () =>  {
+        if (computerPoints < 5 && userPoints < 5) {
             let userOption = "PAPER";
-            let computerChoice = getComputerChoice()
+            let computerChoice = getComputerChoice();
             playRounds(userOption, computerChoice)
-            console.log("your points: ", userPoints, " computer points: ", computerPoints)
-        });
-        document.getElementById('scissors').addEventListener('click', () => {
+            if (computerPoints == 5)  {
+                document.getElementById('status').innerHTML = "YOU LOSE";
+            }
+            else if (userPoints == 5) {
+                document.getElementById('status').innerHTML = "YOU WIN";
+            }
+        }
+        else {
+            if (computerPoints == 5)  {
+                document.getElementById('status').innerHTML = "YOU LOSE";
+            }
+            else {
+                document.getElementById('status').innerHTML = "YOU WIN";
+            }
+        }    });
+    document.getElementById('scissors').addEventListener('click', () => {
+        if (computerPoints < 5 && userPoints < 5) {
             let userOption = "SCISSORS";
-            let computerChoice = getComputerChoice()
+            let computerChoice = getComputerChoice();
             playRounds(userOption, computerChoice)
-            console.log("your points: ", userPoints, " computer points: ", computerPoints)
-        });
-    }
-    else if (computerPoints >= 5 || userPoints >= 5 ) {
-        document.getElementsByClassName('btn').disabled = true;
-        if (computerPoints == 5) {
+            if (computerPoints == 5)  {
+                document.getElementById('status').innerHTML = "YOU LOSE";
+            }
+            else if (userPoints == 5) {
+                document.getElementById('status').innerHTML = "YOU WIN";
+            }
+        }
+        else {
+            if (computerPoints == 5)  {
+                document.getElementById('status').innerHTML = "YOU LOSE";
+            }
+            else {
+                document.getElementById('status').innerHTML = "YOU WIN";
+            }
+        }
+    });
+    document.getElementsByClassName('btn').disabled = true;
+    if (computerPoints == 5 || userPoints == 5) {
+        if (computerPoints == 5)  {
             document.getElementById('status').innerHTML = "YOU LOSE";
         }
         else {
